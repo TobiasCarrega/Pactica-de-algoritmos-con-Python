@@ -1,0 +1,53 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título:
+Fecha:24/9
+Autor: Tobias Carrega
+
+Descripción:
+
+Pendientes:
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
+# No se requieren módulos externos
+
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
+def mostrar_cuadrados(N):
+    # Creamos la lista con los cuadrados de los números del 1 al N
+    cuadrados = []
+    for i in range(1, N + 1):
+        cuadrados.append(i * i)
+
+    # Mostramos los últimos 10 valores de la lista
+    print("\nÚltimos 10 valores de la lista de cuadrados:")
+    # Si hay menos de 10 valores, imprimimos todos
+    if len(cuadrados) < 10:
+        inicio = 0
+    else:
+        inicio = len(cuadrados) - 10
+
+    for i in range(inicio, len(cuadrados)):
+        print(cuadrados[i])
+
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
+def main():
+    # Pedimos el valor de N al usuario
+    N = int(input("Ingrese un número entero positivo N: "))
+    while N <= 0:
+        print("⚠️ El número debe ser positivo.")
+        N = int(input("Ingrese nuevamente un número entero positivo N: "))
+
+    mostrar_cuadrados(N)
+
+# Punto de entrada al programa
+if __name__ == "__main__":
+    main()
+

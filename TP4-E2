@@ -1,0 +1,71 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título:
+Fecha:24/9
+Autor: Tobias Carrega
+
+Descripción:
+
+Pendientes:
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
+import time  # Solo para retrasar 1 segundo en la simulación
+
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
+def mostrar_reloj(horas, minutos, segundos):
+    print(f"{horas:02d}:{minutos:02d}:{segundos:02d}")
+
+def reloj_digital():
+    print("=== RELOJ DIGITAL ===")
+    
+    # Ingreso de valores con validación
+    horas = int(input("Ingrese las horas (0-23): "))
+    while horas < 0 or horas > 23:
+        print("⚠️ Hora inválida. Debe estar entre 0 y 23.")
+        horas = int(input("Ingrese las horas (0-23): "))
+
+    minutos = int(input("Ingrese los minutos (0-59): "))
+    while minutos < 0 or minutos > 59:
+        print("⚠️ Minuto inválido. Debe estar entre 0 y 59.")
+        minutos = int(input("Ingrese los minutos (0-59): "))
+
+    segundos = int(input("Ingrese los segundos (0-59): "))
+    while segundos < 0 or segundos > 59:
+        print("⚠️ Segundo inválido. Debe estar entre 0 y 59.")
+        segundos = int(input("Ingrese los segundos (0-59): "))
+
+    print("\nReloj iniciado. Presione Ctrl+C para detener.\n")
+
+    # Ciclo infinito para avanzar el reloj
+    while True:
+        mostrar_reloj(horas, minutos, segundos)
+        time.sleep(1)  # Espera 1 segundo
+
+        # Incrementar los segundos
+        segundos += 1
+
+        # Si los segundos pasan de 59, reiniciamos y sumamos 1 minuto
+        if segundos > 59:
+            segundos = 0
+            minutos += 1
+
+        # Si los minutos pasan de 59, reiniciamos y sumamos 1 hora
+        if minutos > 59:
+            minutos = 0
+            horas += 1
+
+        # Si las horas pasan de 23, reiniciamos a 0
+        if horas > 23:
+            horas = 0
+
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
+if __name__ == "__main__":
+    reloj_digital()

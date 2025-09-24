@@ -1,0 +1,84 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título:
+Fecha:24/9
+Autor: Tobias Carrega
+
+Descripción:
+
+Pendientes:
+-----------------------------------------------------------------------------------------------
+"""
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
+# No se requieren módulos externos
+
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
+def es_correo_valido(correo):
+    correo = correo.lower()  # no case sensitive
+
+    # Verificamos que contenga exactamente un '@'
+    if correo.count("@") != 1:
+        return False
+    
+    # Separamos usuario y dominio
+    usuario, dominio_completo = correo.split("@")
+
+    # Usuario solo alfanumérico y no vacío
+    if not usuario.isalnum() or len(usuario) == 0:
+        return False
+
+    # Verificamos que termine en ".com.ar"
+    if not dominio_completo.endswith(".com.ar"):
+        return False
+
+    # Extraemos el dominio sin el ".com.ar"
+    dominio = dominio_completo[:-7]
+
+    # Dominio debe tener al menos un carácter
+    if len(dominio) == 0:
+        return False
+
+    return True
+
+def obtener_dominio(correo):
+    correo = correo.lower()
+    return correo.split("@")[1]  # retorna dominio completo con ".com.ar"
+
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
+def main():
+    correos = []
+    print("=== VALIDADOR DE CORREOS ===")
+    while True:
+        mail = input("Ingrese un correo electrónico (Enter para terminar): ")
+        if mail == "":
+            break
+
+        if es_correo_valido(mail):
+            print(f"✔️ {mail} es válido")
+            correos.append(mail)
+        else:
+            print(f"❌ {mail} NO es válido")
+
+    # Creamos lista de dominios únicos
+    dominios = []
+    for correo in correos:
+        dominio = obtener_dominio(correo)
+        if dominio not in dominios:
+            dominios.append(dominio)
+
+    # Ordenamos alfabéticamente
+    dominios.sort()
+
+    # Mostramos los dominios únicos
+    print("\nListado de dominios únicos y ordenados:")
+    for d in dominios:
+        print(d)
+
+# Punto de entrada al programa
+main()

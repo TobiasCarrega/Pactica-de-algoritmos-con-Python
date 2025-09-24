@@ -1,0 +1,47 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título:
+Fecha:24/9
+Autor: Tobias Carrega
+
+Descripción:
+
+Pendientes:
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
+# No se requieren módulos externos
+
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
+def convertir_a_horas(segundos):
+    # Calculamos la cantidad de horas usando división entera
+    horas = segundos // 3600
+    # Calculamos los minutos restantes
+    minutos = (segundos % 3600) // 60
+    # Calculamos los segundos restantes
+    seg_restantes = segundos % 60
+
+    # Armamos el string en formato hh:mm:ss usando f-string
+    resultado = f"{horas:02d}:{minutos:02d}:{seg_restantes:02d}"
+
+    # Devolvemos el string resultante
+    return resultado
+
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
+def main():
+    # Pedimos al usuario que ingrese la cantidad de segundos
+    segundos_ingresados = int(input("Ingrese la cantidad de segundos a convertir: "))
+
+    # Mostramos el resultado de manera intuitiva
+    print(f"La conversión de {segundos_ingresados} segundos es: {convertir_a_horas(segundos_ingresados)}")
+
+# Punto de entrada al programa
+main()
+

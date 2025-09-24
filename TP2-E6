@@ -1,0 +1,59 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título:
+Fecha:24/9
+Autor: Tobias Carrega
+
+Descripción:
+
+Pendientes:
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
+# No se requieren módulos externos
+
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
+# Función que normaliza una lista de números
+def normalizar(lista):
+    total = 0
+    for x in lista:
+        total += x  # sumamos todos los elementos
+
+    if total == 0:  # Evitamos división por cero
+        return [0 for _ in lista]
+
+    # Creamos la lista normalizada
+    lista_normalizada = []
+    for x in lista:
+        lista_normalizada.append(x / total)
+
+    return lista_normalizada
+
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
+def main():
+    print("=== NORMALIZADOR DE LISTAS ===")
+    # Pedimos al usuario los números separados por espacio
+    entrada = input("Ingrese números enteros separados por espacio: ")
+    # Convertimos la entrada en lista de enteros
+    numeros = []
+    for n in entrada.split():
+        numeros.append(int(n))
+
+    # Normalizamos la lista
+    normalizada = normalizar(numeros)
+
+    # Mostramos el resultado
+    print("Lista normalizada:")
+    for valor in normalizada:
+        print(f"{valor:.2f}", end=" ")
+    print()  # línea en blanco
+
+# Punto de entrada al programa
+main()

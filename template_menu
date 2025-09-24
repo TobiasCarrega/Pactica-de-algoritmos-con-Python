@@ -1,0 +1,83 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título:
+Fecha:
+Autor:
+
+Descripción:
+
+Pendientes:
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
+import os
+
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
+def ejecutar_archivo(nombre_archivo):
+    ruta = os.path.join(os.path.dirname(__file__), nombre_archivo)
+    if os.path.exists(ruta):
+        os.system(f'python "{ruta}"')
+    else:
+        print(f"⚠️ El archivo {nombre_archivo} no existe en la carpeta.")
+
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
+def main():
+    #-------------------------------------------------
+    # Inicialización de variables
+    #-------------------------------------------------
+    archivos = [
+        "TP1-E1.py",
+        "TP1-E7.py",
+        "TP2-E3.py",
+        "TP2-E6.py",
+        "TP3-E2.py",
+        "TP4-E2.py",
+        "TP4-E9.py"
+    ]
+
+    #-------------------------------------------------
+    # Bloque de menú
+    #-------------------------------------------------
+    while True:
+        while True:
+            opciones = len(archivos)
+            print()
+            print("---------------------------")
+            print("MENÚ DEL PROGRAMA")
+            print("---------------------------")
+            for i, nombre in enumerate(archivos, 1):
+                print(f"[{i}] Ejecutar {nombre}")
+            print("---------------------------")
+            print("[0] Salir del programa")
+            print("---------------------------")
+            print()
+            
+            opcion = input("Seleccione una opción: ")
+            if opcion in [str(i) for i in range(0, opciones + 1)]:
+                break
+            else:
+                input("Opción inválida. Presione ENTER para volver a seleccionar.")
+        print()
+
+        if opcion == "0":
+            exit()
+
+        else:
+            idx = int(opcion) - 1
+            if 0 <= idx < len(archivos):
+                ejecutar_archivo(archivos[idx])
+            else:
+                print("Opción inválida.")
+
+        input("\nPresione ENTER para volver al menú.")
+        print("\n\n")
+
+# Punto de entrada al programa
+main()
